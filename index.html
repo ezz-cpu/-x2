@@ -1,48 +1,76 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حفظ المياه والأسمدة - Water & Fertilizer Conservation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Banana Paper | Eco-Friendly Paper from Banana Fibers</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Banana Paper - Sustainable Paper from Banana Fibers">
+    <meta property="og:description" content="Transform agricultural waste into beautiful, eco-friendly paper. Made in Egypt for a greener future.">
+    <meta property="og:image" content="https://i.imgur.com/3zQJX9T.png">
+    <meta property="og:url" content="https://bananapaper-egypt.com">
+    <meta name="twitter:card" content="summary_large_image">
+    
     <style>
-        /* Global Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         :root {
-            --primary: #3498db;
-            --secondary: #2c3e50;
-            --accent: #27ae60;
-            --danger: #e74c3c;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --water: #1abc9c;
-            --soil: #8B4513;
+            --primary-green: #27AE60;
+            --dark-green: #219653;
+            --light-green: #D4EDDA;
+            --yellow: #F2C94C;
+            --beige: #FFF9E6;
+            --dark-brown: #2D3436;
+            --light-gray: #F5F5F5;
+            --border-color: #E0E0E0;
+            --success: #27AE60;
+            --error: #E74C3C;
+            --warning: #F39C12;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --radius: 8px;
         }
 
         body {
-            background-color: #f5f7fa;
-            color: var(--dark);
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: var(--dark-brown);
             line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
             overflow-x: hidden;
+            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
         }
 
-        /* Splash Screen Styles */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Splash Screen with Animated Loader */
         #splash-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            height: 100vh;
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -51,1957 +79,1986 @@
             transition: opacity 0.8s ease, visibility 0.8s ease;
         }
 
-        .splash-logo-container {
-            text-align: center;
-            margin-bottom: 2rem;
-            animation: logoPulse 2s infinite alternate;
+        /* The loader container */
+        .loader {
+            width: 200px;
+            height: 200px;
+            perspective: 200px;
+            margin-bottom: 40px;
         }
 
-        .splash-logo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: contain;
-            background: white;
-            padding: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            margin-bottom: 1.5rem;
+        /* The dot */
+        .dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 120px;
+            height: 120px;
+            margin-top: -60px;
+            margin-left: -60px;
+            border-radius: 100px;
+            border: 40px outset #1e3f57;
+            transform-origin: 50% 50%;
+            transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);
+            background-color: transparent;
+            animation: dot1 1000ms cubic-bezier(.49,.06,.43,.85) infinite;
         }
 
-        .splash-title {
+        .dot:nth-child(2) {
+            width: 140px;
+            height: 140px;
+            margin-top: -70px;
+            margin-left: -70px;
+            border-width: 30px;
+            border-color: #447891;
+            animation-name: dot2;
+            animation-delay: 75ms;
+            box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.1);
+            transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);
+        }
+
+        .dot:nth-child(3) {
+            width: 160px;
+            height: 160px;
+            margin-top: -80px;
+            margin-left: -80px;
+            border-width: 20px;
+            border-color: #6bb2cd;
+            animation-name: dot3;
+            animation-delay: 150ms;
+            box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.1);
+            transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);
+        }
+
+        @keyframes dot1 {
+            0% {
+                border-color: #1e3f57;
+                transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);
+            }
+
+            50% {
+                border-color: #1e574f;
+                transform: rotateX(20deg) rotateY(20deg) rotateZ(50deg) translateZ(0px);
+            }
+
+            100% {
+                border-color: #1e3f57;
+                transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);
+            }
+        }
+
+        @keyframes dot2 {
+            0% {
+                border-color: #447891;
+                box-shadow: inset 0 0 15px 0 rgba(255, 255, 255, 0.2);
+                transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);
+            }
+
+            50% {
+                border-color: #449180;
+                box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.8);
+                transform: rotateX(20deg) rotateY(20deg) rotateZ(50deg) translateZ(0px);
+            }
+
+            100% {
+                border-color: #447891;
+                box-shadow: inset 0 0 15px 0 rgba(255, 255, 255, 0.2);
+                transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);
+            }
+        }
+
+        @keyframes dot3 {
+            0% {
+                border-color: #6bb2cd;
+                box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.1);
+                transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);
+            }
+
+            50% {
+                border-color: #6bcdb2;
+                box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.8);
+                transform: rotateX(20deg) rotateY(20deg) rotateZ(50deg) translateZ(0px);
+            }
+
+            100% {
+                border-color: #6bb2cd;
+                box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.1);
+                transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);
+            }
+        }
+
+        .splash-text {
             color: white;
-            font-size: 2.5rem;
+            text-align: center;
+            max-width: 300px;
+        }
+
+        .splash-text h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
             font-weight: 700;
-            text-align: center;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
-        .splash-subtitle {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.2rem;
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 2rem;
+        .splash-text p {
+            font-size: 1.1rem;
+            opacity: 0.9;
         }
 
-        .loading-bar {
-            width: 300px;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 3px;
-            overflow: hidden;
-            margin-top: 2rem;
+        .splash-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
         }
 
-        .loading-progress {
-            height: 100%;
-            width: 0%;
-            background: var(--accent);
-            border-radius: 3px;
-            transition: width 0.3s ease;
-        }
-
-        .splash-water-drop {
-            font-size: 3rem;
-            margin-top: 2rem;
-            animation: waterDrop 2s infinite;
-        }
-
-        @keyframes logoPulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.05); }
-        }
-
-        @keyframes waterDrop {
-            0% { transform: translateY(0); opacity: 1; }
-            50% { transform: translateY(20px); opacity: 0.7; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-
-        /* بقية الأنماط تبقى كما هي */
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        /* Page container for multi-page functionality */
-        .page {
-            display: none;
-            flex: 1;
-        }
-
-        .page.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Header Styles */
+        /* Header - Mobile Optimized */
         header {
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            position: sticky;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 1000;
+            height: 70px;
+            display: flex;
+            align-items: center;
         }
 
-        .header-content {
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 20px;
+            width: 100%;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-            cursor: pointer;
-        }
-
-        .logo-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: contain;
-            background: white;
-            padding: 5px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-
-        .logo h1 {
-            font-size: 1.8rem;
+            text-decoration: none;
+            font-size: 1.4rem;
             font-weight: 700;
+            color: var(--dark-green);
+            gap: 8px;
         }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 1.5rem;
+        .logo span {
+            color: var(--yellow);
         }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            position: relative;
-            cursor: pointer;
-        }
-
-        nav a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
-        }
-
-        nav a.active {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* Button Styles */
-        .btn {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            padding: 0.8rem 1.8rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: right 0.5s;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-            background: #2ecc71;
-        }
-
-        .btn:hover::before {
-            right: 100%;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-secondary {
-            background: var(--secondary);
-            color: white;
-        }
-
-        .btn-water {
-            background: var(--water);
-            color: white;
-        }
-
-        .btn-soil {
-            background: var(--soil);
-            color: white;
-        }
-
-        /* Section Styles */
-        section {
-            padding: 4rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--secondary);
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            right: 50%;
-            transform: translateX(50%);
-            width: 80px;
-            height: 4px;
-            background: var(--primary);
-            border-radius: 2px;
-        }
-
-        /* Cards */
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .card-img {
-            height: 200px;
-            overflow: hidden;
-            background: linear-gradient(45deg, var(--primary), var(--water));
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--primary-green);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 4rem;
+            flex-shrink: 0;
         }
 
-        .card-content {
-            padding: 1.5rem;
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
         }
 
-        .card h3 {
-            margin-bottom: 0.5rem;
-            color: var(--secondary);
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-brown);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+            white-space: nowrap;
         }
 
-        /* Facts Section */
-        .facts {
-            background-color: var(--secondary);
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-green);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary-green);
+            border-radius: 2px;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--dark-brown);
+            cursor: pointer;
+            padding: 8px;
+            margin-left: 10px;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 70px;
+            min-height: calc(100vh - 180px);
+            padding-bottom: 40px;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Home Page - Mobile Optimized */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%2327AE60" opacity="0.2" d="M0,0 L100,0 L100,100 L0,100 Z"/></svg>');
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+            border-radius: 0;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            min-height: 48px;
+            min-width: 140px;
+        }
+
+        .btn-primary {
+            background: var(--primary-green);
             color: white;
         }
 
-        .fact-item {
-            text-align: center;
-            padding: 1.5rem;
+        .btn-primary:hover {
+            background: var(--dark-green);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
         }
 
-        .fact-item i {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
         }
 
-        .fact-item h3 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Forms */
-        .form-container {
-            max-width: 500px;
-            margin: 0 auto;
+        .btn-secondary:hover {
             background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            color: var(--dark-brown);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Features - Mobile Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+            padding: 0 10px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .feature-icon {
+            font-size: 36px;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark-green);
+            font-size: 1.3rem;
+        }
+
+        /* Order Page - Mobile Optimized */
+        .order-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin: 30px 0;
+            padding: 0 10px;
+        }
+
+        .order-form, .order-summary {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 8px;
             font-weight: 500;
-            color: var(--secondary);
+            color: var(--dark-brown);
+            font-size: 0.95rem;
         }
 
-        .form-control {
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
             width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            padding: 14px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            transition: var(--transition);
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
         }
 
-        .form-control:focus {
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
             outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
         }
 
-        /* Interactive Elements */
-        .interactive-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+        /* Image Upload - Mobile Friendly */
+        .image-upload {
+            display: none;
         }
 
-        .interactive-item {
-            background: white;
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .interactive-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .interactive-item i {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .quiz-container {
-            background: white;
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            margin-top: 2rem;
-        }
-
-        .quiz-question {
-            margin-bottom: 1.5rem;
-            font-weight: 500;
-        }
-
-        .quiz-options {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .quiz-option {
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .quiz-option:hover {
-            background: #e9ecef;
-        }
-
-        .quiz-option.selected {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* Game Section */
-        .game-section {
-            background: linear-gradient(135deg, var(--secondary), #1a3c4d);
-            color: white;
-            padding: 4rem 0;
-            border-radius: 15px;
-            margin: 3rem 0;
-            text-align: center;
-        }
-
-        .game-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .game-content {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 2rem;
-            margin-top: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .game-description {
-            text-align: right;
-            margin-top: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .game-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .game-feature {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .game-feature i {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        /* Resources */
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .resource-item {
-            background: white;
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .resource-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .resource-item h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 0.5rem;
-        }
-
-        .resource-item ul {
-            list-style-type: none;
-            padding-right: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .resource-item li {
-            margin-bottom: 0.5rem;
-            position: relative;
-        }
-
-        .resource-item li::before {
-            content: "•";
-            color: var(--accent);
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-left: 0.5em;
-        }
-
-        .resource-links {
-            margin-top: 1.5rem;
-            padding-top: 1rem;
-            border-top: 1px dashed #ddd;
-        }
-
-        .resource-link {
+        .image-upload.active {
             display: block;
-            color: var(--primary);
-            text-decoration: none;
-            margin-bottom: 0.5rem;
-            padding: 0.5rem;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            background: #f8f9fa;
         }
 
-        .resource-link:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateX(-5px);
+        .upload-area {
+            border: 2px dashed var(--primary-green);
+            border-radius: var(--radius);
+            padding: 30px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            background: var(--light-green);
         }
 
-        .resource-link i {
-            margin-left: 0.5rem;
+        .upload-area:hover {
+            border-color: var(--dark-green);
+            background: rgba(39, 174, 96, 0.05);
         }
 
-        /* Water Drop Animation */
-        .water-drop {
-            display: inline-block;
-            animation: drip 2s infinite;
+        .upload-icon {
+            font-size: 36px;
+            color: var(--primary-green);
+            margin-bottom: 10px;
         }
 
-        @keyframes drip {
-            0% { transform: translateY(0); opacity: 1; }
-            50% { transform: translateY(20px); opacity: 0.7; }
-            100% { transform: translateY(0); opacity: 1; }
+        .upload-text {
+            color: var(--dark-brown);
+            font-size: 0.95rem;
         }
 
-        /* Logo Placement Styles */
-        .logo-placeholder {
+        .upload-text span {
+            color: var(--primary-green);
+            text-decoration: underline;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .quantity-btn {
+            width: 44px;
+            height: 44px;
+            border: 2px solid var(--border-color);
+            background: white;
+            border-radius: var(--radius);
+            font-size: 20px;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
-            margin: 1rem 0;
+            transition: var(--transition);
+            touch-action: manipulation;
         }
 
-        .logo-img-large {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: contain;
-            background: white;
-            padding: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        .quantity-btn:active {
+            transform: scale(0.95);
         }
 
-        .logo-img-medium {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: contain;
-            background: white;
-            padding: 6px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        .quantity-display {
+            font-size: 20px;
+            font-weight: 600;
+            min-width: 50px;
+            text-align: center;
         }
 
-        /* Footer */
-        footer {
-            background: var(--secondary);
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary-green);
             color: white;
-            padding: 3rem 0 1.5rem;
-            margin-top: auto;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-family: 'Poppins', sans-serif;
+            min-height: 54px;
+        }
+
+        .submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        .submit-btn:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Order Summary */
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid var(--primary-green);
+        }
+
+        /* Status Messages */
+        .status-message {
+            padding: 15px;
+            border-radius: var(--radius);
+            margin-top: 20px;
+            display: none;
+            font-size: 0.95rem;
+        }
+
+        .status-message.success {
+            display: block;
+            background: var(--light-green);
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+
+        .status-message.error {
+            display: block;
+            background: #FDEDED;
+            color: var(--error);
+            border: 1px solid var(--error);
+        }
+
+        .status-message.warning {
+            display: block;
+            background: #FEF9E7;
+            color: var(--warning);
+            border: 1px solid var(--warning);
+        }
+
+        /* Info Box */
+        .info-box {
+            background: var(--light-green);
+            border-left: 4px solid var(--primary-green);
+            padding: 18px;
+            border-radius: var(--radius);
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+
+        .info-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-box li {
+            margin-bottom: 8px;
+            padding-left: 22px;
+            position: relative;
+        }
+
+        .info-box li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        /* Process Page - Mobile Optimized */
+        .process-steps {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin: 40px 0;
+            padding: 0 10px;
+        }
+
+        .process-step {
+            background: white;
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 36px;
+            height: 36px;
+            background: var(--primary-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .process-step h3 {
+            margin-bottom: 15px;
+            color: var(--dark-green);
+            font-size: 1.2rem;
+        }
+
+        .process-icon {
+            font-size: 36px;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+        }
+
+        /* Social Sharing - Mobile Optimized */
+        .social-share {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .share-icon:active {
+            transform: scale(0.95);
+        }
+
+        .facebook { background: #3b5998; }
+        .twitter { background: #1da1f2; }
+        .whatsapp { background: #25d366; }
+        .telegram { background: #0088cc; }
+
+        /* Notification - Mobile Position */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            left: 20px;
+            background: white;
+            border-radius: var(--radius);
+            padding: 18px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary-green);
+            transform: translateY(100px);
+            transition: transform 0.3s ease;
+            z-index: 10000;
+            max-width: none;
+        }
+
+        .notification.show {
+            transform: translateY(0);
+        }
+
+        /* Footer - Mobile Optimized */
+        footer {
+            background: var(--dark-brown);
+            color: white;
+            padding: 40px 20px 20px;
+            margin-top: 60px;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
         }
 
-        .footer-section h3 {
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-
-        .footer-section h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 50px;
-            height: 2px;
-            background: var(--accent);
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-section a {
-            color: #ddd;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-section a:hover {
-            color: var(--accent);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
+        .footer-logo {
             display: flex;
             align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: all 0.3s ease;
+            gap: 10px;
+            margin-bottom: 15px;
         }
 
-        .social-links a:hover {
-            background: var(--accent);
-            transform: translateY(-3px);
+        .footer-logo-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .footer-logo-text span {
+            color: var(--yellow);
         }
 
         .copyright {
             text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bdc3c7;
+            font-size: 0.9rem;
         }
 
-        /* Hero Section Logo */
-        .hero-logo {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-        }
-
-        /* Crop Selection Game Styles */
-        .crop-game-container {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            margin-top: 2rem;
-        }
-
-        .game-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .game-stats {
-            display: flex;
-            justify-content: space-between;
-            background: #f8f9fa;
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary);
-        }
-
-        .climate-selection {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .climate-card {
-            background: white;
-            border: 2px solid #e9ecef;
-            border-radius: 10px;
-            padding: 1.5rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .climate-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-        }
-
-        .climate-card.selected {
-            border-color: var(--accent);
-            background: rgba(39, 174, 96, 0.1);
-        }
-
-        .climate-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .crops-selection {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .crop-card {
-            background: white;
-            border: 2px solid #e9ecef;
-            border-radius: 10px;
-            padding: 1rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .crop-card:hover {
-            transform: scale(1.05);
-            border-color: var(--primary);
-        }
-
-        .crop-card.selected {
-            border-color: var(--accent);
-            background: rgba(39, 174, 96, 0.1);
-        }
-
-        .crop-image {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 50%;
-            margin-bottom: 0.5rem;
-            background: #f8f9fa;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: var(--primary);
-        }
-
-        .game-result {
-            text-align: center;
-            padding: 2rem;
-            background: #f8f9fa;
-            border-radius: 10px;
-            margin-top: 2rem;
-            display: none;
-        }
-
-        .result-success {
-            background: rgba(39, 174, 96, 0.1);
-            border: 2px solid var(--accent);
-        }
-
-        .result-error {
-            background: rgba(231, 76, 60, 0.1);
-            border: 2px solid var(--danger);
-        }
-
-        .result-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-        }
-
-        .success-icon {
-            color: var(--accent);
-        }
-
-        .error-icon {
-            color: var(--danger);
-        }
-
-        /* Responsive Design */
+        /* Mobile Responsive Styles */
         @media (max-width: 768px) {
-            .header-content {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
                 flex-direction: column;
-                gap: 1rem;
+                background: white;
+                width: 100%;
+                padding: 20px;
+                box-shadow: var(--shadow);
+                transition: left 0.3s ease;
+                gap: 0;
+                height: calc(100vh - 70px);
+                overflow-y: auto;
+                z-index: 999;
             }
 
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
+            .nav-links li {
+                margin-bottom: 0;
+                width: 100%;
             }
 
-            .hero h2 {
-                font-size: 2.2rem;
+            .nav-links a {
+                display: block;
+                padding: 15px 0;
+                border-bottom: 1px solid var(--border-color);
+                font-size: 1.1rem;
             }
-            
-            .logo-placeholder {
+
+            .nav-links a.active::after {
+                display: none;
+            }
+
+            .nav-links a.active {
+                color: var(--primary-green);
+                font-weight: 600;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-btns {
                 flex-direction: column;
-                text-align: center;
+                align-items: stretch;
+                gap: 12px;
             }
-            
-            .splash-title {
-                font-size: 2rem;
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
             }
-            
-            .splash-logo {
+
+            .features {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .order-container {
+                gap: 20px;
+            }
+
+            .order-form, .order-summary {
+                padding: 20px;
+            }
+
+            .form-group {
+                margin-bottom: 18px;
+            }
+
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                padding: 14px;
+                font-size: 16px;
+            }
+
+            .summary-total {
+                font-size: 1.2rem;
+            }
+
+            .process-steps {
+                gap: 20px;
+            }
+
+            .process-step {
+                padding: 20px;
+            }
+
+            .social-share {
+                gap: 10px;
+            }
+
+            .share-icon {
+                width: 44px;
+                height: 44px;
+                font-size: 18px;
+            }
+
+            .loader {
+                width: 150px;
+                height: 150px;
+            }
+
+            .dot {
+                width: 90px;
+                height: 90px;
+                margin-top: -45px;
+                margin-left: -45px;
+                border-width: 30px;
+            }
+
+            .dot:nth-child(2) {
+                width: 105px;
+                height: 105px;
+                margin-top: -52.5px;
+                margin-left: -52.5px;
+                border-width: 22px;
+            }
+
+            .dot:nth-child(3) {
                 width: 120px;
                 height: 120px;
+                margin-top: -60px;
+                margin-left: -60px;
+                border-width: 15px;
             }
-            
-            .game-stats {
-                flex-direction: column;
-                gap: 1rem;
-            }
+        }
 
-            .climate-selection {
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .order-container {
                 grid-template-columns: 1fr;
             }
-
-            .crops-selection {
+            
+            .features {
                 grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Improve touch targets on mobile */
+        @media (hover: none) and (pointer: coarse) {
+            .btn, .submit-btn, .share-icon, .quantity-btn, .mobile-menu-btn {
+                min-height: 44px;
+            }
+            
+            .nav-links a {
+                padding: 12px 0;
+            }
+            
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                min-height: 48px;
+            }
+        }
+
+        /* Prevent zoom on input focus iOS */
+        @supports (-webkit-touch-callout: none) {
+            input, textarea, select {
+                font-size: 16px !important;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Splash Screen -->
+    <!-- Splash Screen with Animated Loader -->
     <div id="splash-screen">
-        <div class="splash-logo-container">
-            <img src="1.png" alt="Logo" class="splash-logo">
-            <h1 class="splash-title">حفظ المياه والأسمدة</h1>
-            <p class="splash-subtitle">من أجل مستقبل مستدام وبيئة أفضل للأجيال القادمة</p>
+        <div class="loader">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
         </div>
-        <div class="splash-water-drop">💧</div>
-        <div class="loading-bar">
-            <div class="loading-progress" id="loading-progress"></div>
+        <div class="splash-text">
+            <h1>Banana Paper</h1>
+            <p>Eco-Friendly Paper from Banana Fibers</p>
         </div>
     </div>
 
     <!-- Header -->
     <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo" onclick="showPage('home')">
-                    <img src="1.png" alt="Logo" class="logo-img">
-                    <h1>حفظ المياه والأسمدة</h1>
+        <div class="container nav-container">
+            <a href="#" class="logo" id="homeLogo">
+                <div class="logo-icon">
+                    <i class="fas fa-leaf"></i>
                 </div>
-                <nav>
-                    <ul>
-                        <li><a class="nav-link active" onclick="showPage('home')">الرئيسية</a></li>
-                        <li><a class="nav-link" onclick="showPage('about')">عن الحفظ</a></li>
-                        <li><a class="nav-link" onclick="showPage('interactive')">التفاعل</a></li>
-                        <li><a class="nav-link" onclick="showPage('resources')">المصادر</a></li>
-                        <li><a class="nav-link" onclick="showPage('signup')">إنشاء حساب</a></li>
-                        <li><a class="nav-link" onclick="showPage('login')">تسجيل الدخول</a></li>
-                    </ul>
-                </nav>
-            </div>
+                <div>Banana<span>Paper</span></div>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-page="order">Order Now</a></li>
+                <li><a href="#" class="nav-link" data-page="process">Our Process</a></li>
+                <li><a href="#" class="nav-link" data-page="prices">Prices</a></li>
+                <li style="display: none;"><button class="share-btn" id="shareBtn">
+                    <i class="fas fa-share-alt"></i>
+                    Share
+                </button></li>
+            </ul>
         </div>
     </header>
 
-    <!-- Home Page -->
-    <div id="home" class="page active">
-        <!-- Hero Section -->
-        <section class="hero" style="background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(52, 152, 219, 0.8)), url('https://images.unsplash.com/photo-1560493676-04071c5f467b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'); background-size: cover; background-position: center; color: white; padding: 6rem 0; text-align: center;">
+    <!-- Main Content -->
+    <main>
+        <!-- Home Page -->
+        <section class="page active" id="home-page">
             <div class="container">
-                <div class="hero-logo">
-                    <img src="1.png" alt="Logo" class="logo-img-large">
+                <div class="hero">
+                    <h1>Transform Waste into Beautiful Paper</h1>
+                    <p>Banana Paper is an eco-friendly innovation that turns agricultural waste into premium, sustainable paper. Made in Egypt for a greener future.</p>
+                    <div class="hero-btns">
+                        <button type="button" class="btn btn-primary" data-page="order">
+                            <i class="fas fa-shopping-cart"></i>
+                            Order Now
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-page="process">
+                            <i class="fas fa-play-circle"></i>
+                            Watch Process
+                        </button>
+                    </div>
                 </div>
-                <h2 style="font-size: 3rem; margin-bottom: 1.5rem;">حافظ على المياه والأسمدة <span class="water-drop">💧</span> من أجل مستقبل مستدام</h2>
-                <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto 2rem;">اكتشف طرق مبتكرة لترشيد استهلاك المياه وتحسين استخدام الأسمدة لتحقيق زراعة مستدامة وحماية بيئتنا.</p>
-                <button class="btn btn-primary" onclick="showPage('about')" style="font-size: 1.1rem; padding: 1rem 2rem;">اكتشف المزيد</button>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about-preview">
-            <div class="container">
-                <h2 class="section-title">أهمية الحفاظ على المياه والأسمدة</h2>
-                <div class="cards">
-                    <div class="card">
-                        <div class="card-img">
-                            <i class="fas fa-tint"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3>ترشيد استهلاك المياه</h3>
-                            <p>تعلم كيفية تقليل هدر المياه في الزراعة والري باستخدام تقنيات حديثة تصل نسبة التوفير إلى 50%.</p>
-                            <button class="btn btn-water" style="margin-top: 1rem;" onclick="showPage('about')">اقرأ المزيد</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-img">
-                            <i class="fas fa-seedling"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3>الاستخدام الذكي للأسمدة</h3>
-                            <p>استخدم الأسمدة بكفاءة لتقليل التلوث البيئي وتوفير التكاليف مع زيادة الإنتاجية.</p>
-                            <button class="btn btn-soil" style="margin-top: 1rem;" onclick="showPage('about')">اقرأ المزيد</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-img">
+                
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon">
                             <i class="fas fa-leaf"></i>
                         </div>
-                        <div class="card-content">
-                            <h3>الزراعة المستدامة</h3>
-                            <p>دمج تقنيات الحفاظ على المياه والأسمدة لتحقيق نظام زراعي مستدام وصديق للبيئة.</p>
-                            <button class="btn btn-accent" style="margin-top: 1rem;" onclick="showPage('about')">اقرأ المزيد</button>
-                        </div>
+                        <h3>100% Natural</h3>
+                        <p>Made from banana plant fibers that would otherwise be discarded as agricultural waste.</p>
                     </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <h3>Water Efficient</h3>
+                        <p>Uses 80% less water than traditional paper manufacturing methods.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Fast Delivery</h3>
+                        <p>Orders processed within 24 hours via Telegram bot for immediate attention.</p>
+                    </div>
+                </div>
+                
+                <!-- Social Sharing -->
+                <div class="social-share">
+                    <p style="margin-right: 15px; color: var(--dark-brown); font-weight: 500; font-size: 0.95rem;">Share with friends:</p>
+                    <a href="#" class="share-icon facebook" onclick="shareOnFacebook(event)">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="share-icon twitter" onclick="shareOnTwitter(event)">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="share-icon whatsapp" onclick="shareOnWhatsApp(event)">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="#" class="share-icon telegram" onclick="shareOnTelegram(event)">
+                        <i class="fab fa-telegram-plane"></i>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- Facts Section -->
-        <section class="facts">
+        <!-- Order Page -->
+        <section class="page" id="order-page">
             <div class="container">
-                <h2 class="section-title" style="color: white;">إحصائيات صادمة</h2>
-                <div class="cards">
-                    <div class="fact-item">
-                        <i class="fas fa-tint"></i>
-                        <h3>70%</h3>
-                        <p>من المياه العذبة تستخدم في الزراعة عالمياً</p>
-                    </div>
-                    <div class="fact-item">
-                        <i class="fas fa-seedling"></i>
-                        <h3>40%</h3>
-                        <p>هدر في استخدام الأسمدة بسبب سوء الاستخدام</p>
-                    </div>
-                    <div class="fact-item">
-                        <i class="fas fa-recycle"></i>
-                        <h3>50%</h3>
-                        <p>توفير محتمل في المياه باستخدام الري الذكي</p>
-                    </div>
-                    <div class="fact-item">
-                        <i class="fas fa-dollar-sign"></i>
-                        <h3>30%</h3>
-                        <p>توفير في تكاليف الزراعة مع الاستخدام الأمثل</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Solutions Section -->
-        <section id="solutions">
-            <div class="container">
-                <div class="logo-placeholder">
-                    <img src="1.png" alt="Logo" class="logo-img-medium">
-                    <h3 style="margin: 0;">حلولنا المبتكرة</h3>
-                </div>
-                <div class="cards">
-                    <div class="card">
-                        <div class="card-content">
-                            <h3><i class="fas fa-cloud-rain" style="color: var(--water); margin-left: 10px;"></i> أنظمة الري الذكية</h3>
-                            <p>استخدام أجهزة استشعار رطوبة التربة وتقنيات الري بالتنقيط لتوفير المياه.</p>
+                <h1 style="text-align: center; margin: 30px 0 20px; color: var(--dark-green); font-size: 1.8rem;">Order Banana Paper</h1>
+                
+                <div class="order-container">
+                    <!-- Order Form -->
+                    <div class="order-form">
+                        <h2 style="margin-bottom: 25px; color: var(--dark-brown); font-size: 1.4rem;">Order Details</h2>
+                        
+                        <!-- Paper Type Selection -->
+                        <div class="form-group">
+                            <label>Paper Type</label>
+                            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
+                                <button type="button" class="btn btn-primary" id="normalPaperBtn" style="width: 100%;">
+                                    Normal Paper - 30 EGP
+                                </button>
+                                <button type="button" class="btn btn-secondary" id="customPaperBtn" style="width: 100%;">
+                                    Custom Paper - 35 EGP
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content">
-                            <h3><i class="fas fa-flask" style="color: var(--soil); margin-left: 10px;"></i> الأسمدة الذكية</h3>
-                            <p>أسمدة متحكم في إطلاق المغذيات تمنع الهدر وتقلل التلوث.</p>
+                        
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" placeholder="your.email@example.com" required>
+                            <small style="color: #666; font-size: 0.85rem; display: block; margin-top: 5px;">
+                                We'll send order confirmation to this email
+                            </small>
                         </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content">
-                            <h3><i class="fas fa-leaf" style="color: var(--accent); margin-left: 10px;"></i> الزراعة الدقيقة</h3>
-                            <p>تطبيق التقنيات الحديثة لتحديد احتياجات كل نبات بدقة.</p>
-                        </div>
-                    </div>
-                </div>
-                <div style="text-align: center; margin-top: 3rem;">
-                    <button class="btn btn-primary" onclick="showPage('signup')">انضم إلى مبادرتنا</button>
-                    <button class="btn btn-secondary" onclick="showPage('interactive')">جرب أدواتنا</button>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- About Page -->
-    <div id="about" class="page">
-        <section class="hero" style="background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(52, 152, 219, 0.8)); color: white; padding: 4rem 0; text-align: center;">
-            <div class="container">
-                <div class="logo-placeholder">
-                    <img src="1.png" alt="Logo" class="logo-img-large">
-                    <h2 style="margin: 0; color: white;">عن الحفاظ على المياه والأسمدة</h2>
-                </div>
-                <p style="color: white;">تعرف على أهمية ترشيد الاستهلاك وتأثيره الإيجابي على البيئة والاقتصاد</p>
-            </div>
-        </section>
-
-        <section>
-            <div class="container">
-                <div class="cards">
-                    <div class="card">
-                        <div class="card-content">
-                            <h3>لماذا الحفاظ على المياه؟</h3>
-                            <p>المياه مورد محدود ومهم للحياة والزراعة. مع تزايد السكان والتغير المناخي، أصبح ترشيد استهلاك المياه ضرورة حتمية للحفاظ على الأمن المائي والغذائي.</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content">
-                            <h3>تحديات استهلاك الأسمدة</h3>
-                            <ul>
-                                <li>هدر الأسمدة بسبب التطبيق غير الدقيق</li>
-                                <li>تلوث المياه الجوفية والأنهار</li>
-                                <li>ارتفاع التكاليف على المزارعين</li>
-                                <li>تأثير سلبي على جودة التربة</li>
-                                <li>انبعاثات غازات الدفيئة</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content">
-                            <h3>فوائد الاستخدام الأمثل</h3>
-                            <ul>
-                                <li>توفير يصل إلى 50% في استهلاك المياه</li>
-                                <li>تقليل تكاليف الزراعة بنسبة 30%</li>
-                                <li>تحسين جودة المحاصيل وزيادة الإنتاج</li>
-                                <li>حماية البيئة والمصادر المائية</li>
-                                <li>استدامة الموارد للأجيال القادمة</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="margin-top: 3rem;">
-                    <h3 class="section-title">تقنيات حديثة في الري</h3>
-                    <div class="card">
-                        <div class="card-content">
-                            <p>تشمل التقنيات الحديثة أنظمة الري بالتنقيط، والري الذكي باستخدام أجهزة الاستشعار، والري حسب احتياجات النبات. هذه التقنيات تساعد في توفير المياه وتقليل الهدر بشكل كبير.</p>
-                            <div style="text-align: center; margin-top: 2rem;">
-                                <div class="card-img">
-                                    <i class="fas fa-water" style="font-size: 4rem;"></i>
+                        
+                        <!-- Image Upload for Custom Paper -->
+                        <div class="form-group image-upload" id="imageUploadSection">
+                            <label>Upload Your Design *</label>
+                            <div class="upload-area" id="uploadArea">
+                                <div class="upload-icon">
+                                    <i class="fas fa-cloud-upload-alt"></i>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="text-align: center; margin-top: 3rem;">
-                    <button class="btn btn-primary" onclick="showPage('interactive')">جرب أدواتنا التفاعلية</button>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Interactive Page -->
-    <div id="interactive" class="page">
-        <section class="hero" style="background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(52, 152, 219, 0.8)); color: white; padding: 4rem 0; text-align: center;">
-            <div class="container">
-                <div class="logo-placeholder">
-                    <img src="1.png" alt="Logo" class="logo-img-large">
-                    <h2 style="margin: 0; color: white;">التفاعل مع الحلول</h2>
-                </div>
-                <p style="color: white;">استكشف أدوات تفاعلية لمعرفة المزيد عن ترشيد المياه والأسمدة وكيف يمكنك المساعدة</p>
-            </div>
-        </section>
-
-        <section>
-            <div class="container">
-                <h2 class="section-title">أدوات تفاعلية</h2>
-                
-                <div class="interactive-container">
-                    <div class="interactive-item" onclick="startCalculator()">
-                        <i class="fas fa-calculator"></i>
-                        <h3>حاسبة الاستهلاك</h3>
-                        <p>احسب كمية المياه والأسمدة التي تستخدمها وتعلم كيفية تقليلها</p>
-                    </div>
-                    <div class="interactive-item" onclick="startQuiz()">
-                        <i class="fas fa-question-circle"></i>
-                        <h3>اختبار المعرفة</h3>
-                        <p>اختبر معلوماتك حول ترشيد المياه والاستخدام الأمثل للأسمدة</p>
-                    </div>
-                    <div class="interactive-item" onclick="showImpact()">
-                        <i class="fas fa-chart-line"></i>
-                        <h3>تأثير الترشيد</h3>
-                        <p>شاهد كيف يؤثر الترشيد على البيئة والاقتصاد بمرور الوقت</p>
-                    </div>
-                    <div class="interactive-item" onclick="startCropGame()">
-                        <i class="fas fa-seedling"></i>
-                        <h3>لعبة المحاصيل</h3>
-                        <p>اختر المحاصيل المناسبة للمناخ المختلف</p>
-                    </div>
-                </div>
-
-                <!-- Consumption Calculator -->
-                <div id="calculator" class="quiz-container" style="display: none;">
-                    <h3>حاسبة استهلاك المياه والأسمدة</h3>
-                    <div class="form-group">
-                        <label>مساحة الأرض الزراعية (هكتار)</label>
-                        <input type="number" id="land" class="form-control" min="0" value="1">
-                    </div>
-                    <div class="form-group">
-                        <label>كمية المياه المستخدمة أسبوعياً (م³)</label>
-                        <input type="number" id="waterUsage" class="form-control" min="0" value="100">
-                    </div>
-                    <div class="form-group">
-                        <label>كمية الأسمدة المستخدمة شهرياً (كجم)</label>
-                        <input type="number" id="fertilizerUsage" class="form-control" min="0" value="50">
-                    </div>
-                    <button class="btn btn-primary" onclick="calculateConsumption()">احسب استهلاكك</button>
-                    <div id="calculator-result" style="margin-top: 1.5rem; padding: 1rem; background: #f8f9fa; border-radius: 4px; display: none;"></div>
-                </div>
-
-                <!-- Quiz -->
-                <div id="quiz" class="quiz-container" style="display: none;">
-                    <h3>اختبار المعرفة حول ترشيد المياه والأسمدة</h3>
-                    <div id="quiz-questions">
-                        <div class="quiz-question" id="q1">
-                            <p>ما هي أفضل طريقة لترشيد استهلاك المياه في الزراعة؟</p>
-                            <div class="quiz-options">
-                                <div class="quiz-option" onclick="selectOption(this)">الري بالغمر</div>
-                                <div class="quiz-option" onclick="selectOption(this)">الري بالتنقيط</div>
-                                <div class="quiz-option" onclick="selectOption(this)">الري بالرشاشات</div>
-                                <div class="quiz-option" onclick="selectOption(this)">الري حسب المزاج</div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary" onclick="nextQuestion()" style="margin-top: 1.5rem;">السؤال التالي</button>
-                    <div id="quiz-result" style="margin-top: 1.5rem; padding: 1rem; background: #f8f9fa; border-radius: 4px; display: none;"></div>
-                </div>
-
-                <!-- Impact Visualization -->
-                <div id="impact" class="quiz-container" style="display: none;">
-                    <h3>تأثير ترشيد الاستهلاك</h3>
-                    <p>شاهد كيف يتراكم التوفير بمرور الوقت:</p>
-                    <div style="height: 300px; background: #e9ecef; border-radius: 4px; position: relative; overflow: hidden; margin-top: 1rem;">
-                        <div id="savings-visualization" style="position: absolute; bottom: 0; width: 100%; background: linear-gradient(to top, var(--accent), #2ecc71); height: 0%;"></div>
-                    </div>
-                    <div style="text-align: center; margin-top: 1rem;">
-                        <button class="btn btn-secondary" onclick="simulateYears(1)">+1 سنة</button>
-                        <button class="btn btn-secondary" onclick="simulateYears(5)">+5 سنوات</button>
-                        <button class="btn btn-secondary" onclick="simulateYears(10)">+10 سنوات</button>
-                        <button class="btn btn-danger" onclick="resetSimulation()">إعادة التعيين</button>
-                    </div>
-                    <div id="impact-stats" style="margin-top: 1.5rem; padding: 1rem; background: #f8f9fa; border-radius: 4px;"></div>
-                </div>
-
-                <!-- Crop Selection Game -->
-                <div id="crop-game" class="crop-game-container" style="display: none;">
-                    <div class="game-header">
-                        <h3>لعبة اختيار المحاصيل المناسبة للمناخ</h3>
-                        <p>اختر المناخ ثم اختر المحاصيل المناسبة لهذا المناخ</p>
-                    </div>
-                    
-                    <div class="game-stats">
-                        <div class="stat-item">
-                            <div class="stat-value" id="score">0</div>
-                            <div>النقاط</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value" id="level">1</div>
-                            <div>المستوى</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value" id="lives">3</div>
-                            <div>المحاولات</div>
-                        </div>
-                    </div>
-
-                    <div class="climate-selection">
-                        <div class="climate-card" onclick="selectClimate('desert')">
-                            <div class="climate-icon">🏜️</div>
-                            <h4>مناخ صحراوي</h4>
-                            <p>حار وجاف، أمطار قليلة</p>
-                        </div>
-                        <div class="climate-card" onclick="selectClimate('mediterranean')">
-                            <div class="climate-icon">🌊</div>
-                            <h4>مناخ متوسطي</h4>
-                            <p>معتدل، شتاء ماطر وصيف جاف</p>
-                        </div>
-                        <div class="climate-card" onclick="selectClimate('tropical')">
-                            <div class="climate-icon">🌴</div>
-                            <h4>مناخ استوائي</h4>
-                            <p>حار ورطب، أمطار غزيرة</p>
-                        </div>
-                        <div class="climate-card" onclick="selectClimate('temperate')">
-                            <div class="climate-icon">🍂</div>
-                            <h4>مناخ معتدل</h4>
-                            <p>فصول متباينة، أمطار منتظمة</p>
-                        </div>
-                    </div>
-
-                    <div id="crops-section" style="display: none;">
-                        <h4 style="text-align: center; margin-bottom: 1rem;">اختر المحاصيل المناسبة للمناخ المحدد</h4>
-                        <div class="crops-selection">
-                            <div class="crop-card" onclick="selectCrop('date')">
-                                <div class="crop-image">🌴</div>
-                                <h5>النخيل</h5>
-                                <p>يتحمل الجفاف</p>
-                            </div>
-                            <div class="crop-card" onclick="selectCrop('olive')">
-                                <div class="crop-image">🫒</div>
-                                <h5>الزيتون</h5>
-                                <p>يتحمل الجفاف</p>
-                            </div>
-                            <div class="crop-card" onclick="selectCrop('tomato')">
-                                <div class="crop-image">🍅</div>
-                                <h5>الطماطم</h5>
-                                <p>مناخ معتدل</p>
-                            </div>
-                            <div class="crop-card" onclick="selectCrop('rice')">
-                                <div class="crop-image">🌾</div>
-                                <h5>الأرز</h5>
-                                <p>يتطلب مياه كثيرة</p>
-                            </div>
-                            <div class="crop-card" onclick="selectCrop('banana')">
-                                <div class="crop-image">🍌</div>
-                                <h5>الموز</h5>
-                                <p>مناخ استوائي</p>
-                            </div>
-                            <div class="crop-card" onclick="selectCrop('wheat')">
-                                <div class="crop-image">🌾</div>
-                                <h5>القمح</h5>
-                                <p>مناخ معتدل</p>
-                            </div>
-                            <div class="crop-card" onclick="selectCrop('coffee')">
-                                <div class="crop-image">☕</div>
-                                <h5>البن</h5>
-                                <p>مناخ استوائي</p>
-                            </div>
-                            <div class="crop-card" onclick="selectCrop('grape')">
-                                <div class="crop-image">🍇</div>
-                                <h5>العنب</h5>
-                                <p>مناخ متوسطي</p>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary" onclick="checkCropSelection()" style="width: 100%; margin-top: 1rem;">تحقق من الاختيار</button>
-                    </div>
-
-                    <div id="game-result" class="game-result">
-                        <div class="result-icon success-icon">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                        <h3 id="result-title">إجابة صحيحة!</h3>
-                        <p id="result-message">لقد اخترت المحصول المناسب للمناخ.</p>
-                        <button class="btn btn-primary" onclick="nextLevel()">المستوى التالي</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Game Section -->
-        <section class="game-section">
-            <div class="container">
-                <div class="game-container">
-                    <div class="logo-placeholder">
-                        <img src="1.png" alt="Logo" class="logo-img-medium">
-                        <h2 class="section-title" style="color: white; margin: 0;">لعبة الروبوت النظيف</h2>
-                    </div>
-                    <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto;">استمتع بلعبة تفاعلية حيث تساعد الروبوت في تنظيف البيئة والحفاظ على الموارد</p>
-                    
-                    <div class="game-content">
-                        <h3 style="margin-bottom: 1rem;">العب الآن!</h3>
-                        <p>انقر على الزر أدناه لبدء اللعبة في نافذة جديدة</p>
-                        
-                        <div style="margin: 2rem 0;">
-                            <button class="btn btn-primary" onclick="openGame()" style="font-size: 1.2rem; padding: 1rem 2rem;">
-                                <i class="fas fa-gamepad" style="margin-left: 10px;"></i>
-                                ابدأ اللعبة
-                            </button>
-                        </div>
-                        
-                        <div class="game-features">
-                            <div class="game-feature">
-                                <i class="fas fa-robot"></i>
-                                <h4>روبوت ذكي</h4>
-                                <p>تحكم بروبوت متطور مهمته حماية البيئة</p>
-                            </div>
-                            <div class="game-feature">
-                                <i class="fas fa-tint"></i>
-                                <h4>ترشيد المياه</h4>
-                                <p>تعلم كيفية استخدام المياه بشكل فعال</p>
-                            </div>
-                            <div class="game-feature">
-                                <i class="fas fa-medal"></i>
-                                <h4>تحديات ممتعة</h4>
-                                <p>تخطى المستويات وارفع مهاراتك في الحفاظ على الموارد</p>
+                                <p class="upload-text">Tap to upload image</p>
+                                <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                                <img id="imagePreview" alt="Preview">
                             </div>
                         </div>
                         
-                        <div class="game-description">
-                            <h4>عن اللعبة:</h4>
-                            <p>في هذه اللعبة التفاعلية، ستلعب دور روبوت متطور مهمته حماية البيئة وترشيد استخدام الموارد. ستتعلم خلال اللعبة كيفية استخدام المياه والأسمدة بشكل فعال، وتجنب الهدر، وحماية البيئة من التلوث.</p>
-                            <p>اللعبة مصممة لتكون ممتعة وتعليمية في نفس الوقت، حيث تقدم معلومات قيمة عن الحفاظ على الموارد بينما تستمتع بتجربة اللعب.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Resources Page -->
-    <div id="resources" class="page">
-        <section class="hero" style="background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(52, 152, 219, 0.8)); color: white; padding: 4rem 0; text-align: center;">
-            <div class="container">
-                <div class="logo-placeholder">
-                    <img src="1.png" alt="Logo" class="logo-img-large">
-                    <h2 style="margin: 0; color: white;">المصادر والتعليم</h2>
-                </div>
-                <p style="color: white;">اكتشف موارد تعليمية ومبادرات ومنظمات تعمل على ترشيد استهلاك المياه والأسمدة</p>
-            </div>
-        </section>
-
-        <section>
-            <div class="container">
-                <h2 class="section-title">مصادر للمعرفة والعمل</h2>
-                
-                <div class="resources-grid">
-                    <!-- منظمات عالمية -->
-                    <div class="resource-item">
-                        <h3>منظمات عالمية</h3>
-                        <ul>
-                            <li>منظمة الأغذية والزراعة (FAO)</li>
-                            <li>برنامج الأمم المتحدة للبيئة (UNEP)</li>
-                            <li>منظمة المياه العالمية (World Water Council)</li>
-                            <li>الاتحاد الدولي لحفظ الطبيعة (IUCN)</li>
-                            <li>منظمة الصحة العالمية (WHO)</li>
-                        </ul>
-                        <div class="resource-links">
-                            <a href="https://www.fao.org" target="_blank" class="resource-link">
-                                <i class="fas fa-external-link-alt"></i>
-                                زيارة موقع FAO
-                            </a>
-                            <a href="https://www.unep.org" target="_blank" class="resource-link">
-                                <i class="fas fa-external-link-alt"></i>
-                                زيارة موقع UNEP
-                            </a>
-                            <a href="https://www.worldwatercouncil.org" target="_blank" class="resource-link">
-                                <i class="fas fa-external-link-alt"></i>
-                                زيارة موقع World Water Council
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- مبادرات محلية -->
-                    <div class="resource-item">
-                        <h3>مبادرات محلية</h3>
-                        <ul>
-                            <li>برنامج "قطرة" لترشيد المياه</li>
-                            <li>مبادرة "الزراعة الذكية" في السعودية</li>
-                            <li>"الري الحديث" في مصر</li>
-                            <li>"أسمدة ذكية" في الإمارات</li>
-                            <li>"مياهنا مسؤوليتنا" في المغرب</li>
-                        </ul>
-                        <div class="resource-links">
-                            <a href="https://www.qatra.org" target="_blank" class="resource-link">
-                                <i class="fas fa-external-link-alt"></i>
-                                برنامج قطرة
-                            </a>
-                            <a href="https://www.smartagri.sa" target="_blank" class="resource-link">
-                                <i class="fas fa-external-link-alt"></i>
-                                الزراعة الذكية - السعودية
-                            </a>
-                            <a href="https://www.modernirrigation.eg" target="_blank" class="resource-link">
-                                <i class="fas fa-external-link-alt"></i>
-                                الري الحديث - مصر
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- تقارير ودراسات -->
-                    <div class="resource-item">
-                        <h3>تقارير ودراسات</h3>
-                        <ul>
-                            <li>تقرير الأمم المتحدة عن ندرة المياه</li>
-                            <li>دراسات عن تأثير الأسمدة على البيئة</li>
-                            <li>أبحاث حول تقنيات الري الحديثة</li>
-                            <li>تحليلات اقتصادية للزراعة المستدامة</li>
-                            <li>دراسات عن الأسمدة العضوية والبديلة</li>
-                        </ul>
-                        <div class="resource-links">
-                            <a href="https://www.unwater.org/publications" target="_blank" class="resource-link">
-                                <i class="fas fa-download"></i>
-                                تقارير المياه العالمية
-                            </a>
-                            <a href="https://www.fao.org/fertilizer-studies" target="_blank" class="resource-link">
-                                <i class="fas fa-download"></i>
-                                دراسات الأسمدة - FAO
-                            </a>
-                            <a href="https://www.iwmi.org/research" target="_blank" class="resource-link">
-                                <i class="fas fa-download"></i>
-                                أبحاث إدارة المياه
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- أدوات عملية -->
-                    <div class="resource-item">
-                        <h3>أدوات عملية</h3>
-                        <ul>
-                            <li>حاسبة البصمة المائية</li>
-                            <li>خريطة مصادر المياه</li>
-                            <li>دليل الأسمدة العضوية</li>
-                            <li>تطبيقات الري الذكي</li>
-                            <li>أدوات قياس جودة التربة</li>
-                        </ul>
-                        <div class="resource-links">
-                            <a href="https://www.waterfootprint.org" target="_blank" class="resource-link">
-                                <i class="fas fa-calculator"></i>
-                                حاسبة البصمة المائية
-                            </a>
-                            <a href="https://www.soilhealth.com" target="_blank" class="resource-link">
-                                <i class="fas fa-map-marker-alt"></i>
-                                أدوات قياس صحة التربة
-                            </a>
-                            <a href="https://www.organicfertilizer.org" target="_blank" class="resource-link">
-                                <i class="fas fa-leaf"></i>
-                                دليل الأسمدة العضوية
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- مصادر تعليمية -->
-                    <div class="resource-item">
-                        <h3>مصادر تعليمية</h3>
-                        <ul>
-                            <li>فيديوهات توعوية عن ترشيد المياه</li>
-                            <li>خطط دروس للمعلمين</li>
-                            <li>أنشطة تفاعلية للأطفال</li>
-                            <li>كورسات عن الزراعة المستدامة</li>
-                            <li>كتب عن إدارة الموارد المائية</li>
-                        </ul>
-                        <div class="resource-links">
-                            <a href="https://www.edx.org/water-conservation" target="_blank" class="resource-link">
-                                <i class="fas fa-graduation-cap"></i>
-                                كورسات عن ترشيد المياه
-                            </a>
-                            <a href="https://www.nationalgeographic.org/water" target="_blank" class="resource-link">
-                                <i class="fas fa-book"></i>
-                                موارد تعليمية - ناشيونال جيوغرافيك
-                            </a>
-                            <a href="https://www.kidsandwater.org" target="_blank" class="resource-link">
-                                <i class="fas fa-child"></i>
-                                أنشطة تفاعلية للأطفال
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- أخبار ومستجدات -->
-                    <div class="resource-item">
-                        <h3>أخبار ومستجدات</h3>
-                        <ul>
-                            <li>آخر الأبحاث العلمية</li>
-                            <li>تطورات تقنيات الري</li>
-                            <li>قصص نجاح في ترشيد الاستهلاك</li>
-                            <li>مؤتمرات المياه العالمية</li>
-                            <li>تحديثات السياسات الزراعية</li>
-                        </ul>
-                        <div class="resource-links">
-                            <a href="https://www.sciencedaily.com/water" target="_blank" class="resource-link">
-                                <i class="fas fa-flask"></i>
-                                آخر الأبحاث العلمية
-                            </a>
-                            <a href="https://www.agriculture.com/news" target="_blank" class="resource-link">
-                                <i class="fas fa-newspaper"></i>
-                                أخبار الزراعة المستدامة
-                            </a>
-                            <a href="https://www.waterworld.com" target="_blank" class="resource-link">
-                                <i class="fas fa-recycle"></i>
-                                تقنيات إدارة المياه
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="text-align: center; margin-top: 3rem;">
-                    <button class="btn btn-primary" onclick="showPage('signup')">انضم إلى نشرتنا الإخبارية</button>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Signup Page -->
-    <div id="signup" class="page">
-        <section class="hero" style="background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(52, 152, 219, 0.8)); color: white; padding: 4rem 0; text-align: center;">
-            <div class="container">
-                <div class="logo-placeholder">
-                    <img src="1.png" alt="Logo" class="logo-img-large">
-                    <h2 style="margin: 0; color: white;">انضم إلى مبادرتنا</h2>
-                </div>
-                <p style="color: white;">سجل معنا لتكون جزءاً من الحل وتتلقى آخر المستجدات حول ترشيد المياه والأسمدة</p>
-            </div>
-        </section>
-
-        <section>
-            <div class="container">
-                <div class="form-container">
-                    <div class="logo-placeholder">
-                        <img src="1.png" alt="Logo" class="logo-img-medium">
-                        <h2 style="margin: 0;">إنشاء حساب جديد</h2>
-                    </div>
-                    <form id="signup-form">
+                        <!-- Quantity -->
                         <div class="form-group">
-                            <label for="name">الاسم الكامل</label>
-                            <input type="text" id="name" class="form-control" required>
+                            <label>Quantity</label>
+                            <div class="quantity-control">
+                                <button type="button" class="quantity-btn" id="decreaseBtn">-</button>
+                                <div class="quantity-display" id="quantityDisplay">2</div>
+                                <button type="button" class="quantity-btn" id="increaseBtn">+</button>
+                            </div>
                         </div>
+                        
+                        <!-- Paper Size -->
                         <div class="form-group">
-                            <label for="email">البريد الإلكتروني</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">كلمة المرور</label>
-                            <input type="password" id="password" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="confirm-password">تأكيد كلمة المرور</label>
-                            <input type="password" id="confirm-password" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="interest">مجال الاهتمام</label>
-                            <select id="interest" class="form-control" required>
-                                <option value="">اختر مجال اهتمامك</option>
-                                <option value="water">ترشيد المياه</option>
-                                <option value="fertilizer">الاستخدام الأمثل للأسمدة</option>
-                                <option value="agriculture">الزراعة المستدامة</option>
-                                <option value="education">التوعية والتعليم</option>
-                                <option value="technology">التقنيات الحديثة</option>
+                            <label for="paperSize">Paper Size</label>
+                            <select id="paperSize">
+                                <option value="A4">A4 (210 × 297 mm)</option>
+                                <option value="A5">A5 (148 × 210 mm)</option>
                             </select>
                         </div>
+                        
+                        <!-- Special Instructions -->
                         <div class="form-group">
-                            <label>
-                                <input type="checkbox" id="newsletter" checked>
-                                أرغب في تلقي النشرة الإخبارية حول آخر المستجدات
-                            </label>
+                            <label for="notes">Special Instructions (Optional)</label>
+                            <textarea id="notes" rows="3" placeholder="Any special requests or instructions..."></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">إنشاء حساب</button>
-                    </form>
-                    <p style="text-align: center; margin-top: 1.5rem;">
-                        لديك حساب بالفعل؟ <a href="#" onclick="showPage('login')" style="color: var(--primary);">سجل الدخول هنا</a>
-                    </p>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Login Page -->
-    <div id="login" class="page">
-        <section class="hero" style="background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(52, 152, 219, 0.8)); color: white; padding: 4rem 0; text-align: center;">
-            <div class="container">
-                <div class="logo-placeholder">
-                    <img src="1.png" alt="Logo" class="logo-img-large">
-                    <h2 style="margin: 0; color: white;">تسجيل الدخول</h2>
-                </div>
-                <p style="color: white;">ادخل إلى حسابك للمشاركة في المناقشات وتتبع تقدمك</p>
-            </div>
-        </section>
-
-        <section>
-            <div class="container">
-                <div class="form-container">
-                    <div class="logo-placeholder">
-                        <img src="1.png" alt="Logo" class="logo-img-medium">
-                        <h2 style="margin: 0;">تسجيل الدخول</h2>
+                        
+                        <!-- Submit Button -->
+                        <button type="button" class="submit-btn" id="submitOrderBtn">
+                            <i class="fas fa-paper-plane"></i>
+                            Place Order - <span id="totalPrice">60</span> EGP
+                        </button>
+                        
+                        <!-- Status Message -->
+                        <div class="status-message" id="statusMessage"></div>
+                        
+                        <!-- Telegram Info -->
+                        <div class="info-box">
+                            <p><strong><i class="fab fa-telegram" style="color: #0088cc; margin-right: 8px;"></i> Instant Telegram Processing</strong></p>
+                            <p style="font-size: 0.9rem; margin-top: 8px;">Your order is immediately sent to our Telegram bot for processing.</p>
+                        </div>
                     </div>
-                    <form id="login-form">
-                        <div class="form-group">
-                            <label for="login-email">البريد الإلكتروني</label>
-                            <input type="email" id="login-email" class="form-control" required>
+                    
+                    <!-- Order Summary -->
+                    <div class="order-summary">
+                        <h2 style="margin-bottom: 25px; color: var(--dark-brown); font-size: 1.4rem;">Order Summary</h2>
+                        
+                        <div class="summary-item">
+                            <span>Paper Type:</span>
+                            <span id="summaryType">Normal Paper</span>
                         </div>
-                        <div class="form-group">
-                            <label for="login-password">كلمة المرور</label>
-                            <input type="password" id="login-password" class="form-control" required>
+                        
+                        <div class="summary-item">
+                            <span>Quantity:</span>
+                            <span id="summaryQuantity">2</span>
                         </div>
-                        <div class="form-group">
-                            <label>
-                                <input type="checkbox" id="remember">
-                                تذكرني
-                            </label>
+                        
+                        <div class="summary-item">
+                            <span>Size:</span>
+                            <span id="summarySize">A4</span>
                         </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">تسجيل الدخول</button>
-                    </form>
-                    <p style="text-align: center; margin-top: 1.5rem;">
-                        <a href="#" style="color: var(--primary);">نسيت كلمة المرور؟</a>
-                    </p>
-                    <p style="text-align: center; margin-top: 1rem;">
-                        لا تملك حساباً؟ <a href="#" onclick="showPage('signup')" style="color: var(--primary);">أنشئ حساباً جديداً</a>
-                    </p>
+                        
+                        <div class="summary-item">
+                            <span>Unit Price:</span>
+                            <span id="summaryUnitPrice">30 EGP</span>
+                        </div>
+                        
+                        <div class="summary-total">
+                            <span>Total Amount:</span>
+                            <span id="summaryTotal">60 EGP</span>
+                        </div>
+                        
+                        <!-- Delivery Info -->
+                        <div class="info-box" style="margin-top: 25px;">
+                            <h4 style="margin-bottom: 10px; font-size: 1.1rem;"><i class="fas fa-shipping-fast" style="margin-right: 8px;"></i> Delivery Information</h4>
+                            <ul>
+                                <li>Delivery within 3–5 business days in Cairo</li>
+                                <li>5–7 days for other governorates</li>
+                                <li>Free delivery for orders over 100 EGP</li>
+                                <li>Cash on delivery available</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Eco Impact -->
+                        <div style="background: var(--beige); padding: 18px; border-radius: var(--radius); margin-top: 20px; text-align: center;">
+                            <h4 style="margin-bottom: 10px; color: var(--dark-green); font-size: 1.1rem;">
+                                <i class="fas fa-leaf" style="margin-right: 8px;"></i>
+                                Eco-Friendly Impact
+                            </h4>
+                            <p style="font-size: 0.9rem; margin-bottom: 10px;">
+                                Each sheet saves approximately 0.5 kg of banana waste from landfills
+                            </p>
+                            <button type="button" class="btn btn-primary" onclick="shareImpact()" style="padding: 8px 20px; font-size: 0.9rem; min-height: auto;">
+                                <i class="fas fa-share-alt"></i> Share Impact
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-    </div>
+
+        <!-- Process Page -->
+        <section class="page" id="process-page">
+            <div class="container">
+                <h1 style="text-align: center; margin: 30px 0 20px; color: var(--dark-green); font-size: 1.8rem;">Our Sustainable Process</h1>
+                
+                <div class="process-steps">
+                    <!-- Step 1 -->
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="process-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3>Harvest Banana Fibers</h3>
+                        <p>We collect banana stems after fruit harvest - agricultural waste that would otherwise be discarded.</p>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="process-icon">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <h3>Extract Natural Fibers</h3>
+                        <p>Natural separation of long, strong fibers from plant material using traditional methods.</p>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="process-icon">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <h3>Create Paper Pulp</h3>
+                        <p>Fibers mixed with water to create pulp, using 80% less water than traditional methods.</p>
+                    </div>
+                    
+                    <!-- Step 4 -->
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <div class="process-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h3>Form Paper Sheets</h3>
+                        <p>Pulp spread and pressed to form unique paper sheets with natural texture variations.</p>
+                    </div>
+                    
+                    <!-- Step 5 -->
+                    <div class="process-step">
+                        <div class="step-number">5</div>
+                        <div class="process-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <h3>Solar Drying</h3>
+                        <p>Sheets dried naturally using solar energy, eliminating need for energy-intensive machines.</p>
+                    </div>
+                    
+                    <!-- Step 6 -->
+                    <div class="process-step">
+                        <div class="step-number">6</div>
+                        <div class="process-icon">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <h3>Eco-Packaging & Delivery</h3>
+                        <p>Paper cut, inspected, and packaged in recycled materials for eco-friendly delivery.</p>
+                    </div>
+                </div>
+                
+                <!-- Call to Action -->
+                <div style="text-align: center; margin: 40px 0;">
+                    <h2 style="color: var(--dark-green); margin-bottom: 15px; font-size: 1.5rem;">Ready to Make a Difference?</h2>
+                    <p style="max-width: 700px; margin: 0 auto 25px; color: var(--dark-brown); font-size: 1rem;">
+                        Join hundreds of environmentally-conscious customers who have switched to sustainable banana paper.
+                    </p>
+                    <button type="button" class="btn btn-primary" data-page="order" style="padding: 14px 30px; font-size: 1rem;">
+                        <i class="fas fa-leaf"></i>
+                        Order Sustainable Paper
+                    </button>
+                </div>
+                
+                <!-- Share Section -->
+                <div style="text-align: center; margin-top: 40px;">
+                    <h3 style="color: var(--dark-green); margin-bottom: 15px; font-size: 1.3rem;">Share Our Mission</h3>
+                    <div class="social-share">
+                        <a href="#" class="share-icon facebook" onclick="shareOnFacebook(event)">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="share-icon twitter" onclick="shareOnTwitter(event)">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="share-icon whatsapp" onclick="shareOnWhatsApp(event)">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="share-icon telegram" onclick="shareOnTelegram(event)">
+                            <i class="fab fa-telegram-plane"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prices Page -->
+        <section class="page" id="prices-page">
+            <div class="container">
+                <h1 style="text-align: center; margin: 30px 0 20px; color: var(--dark-green); font-size: 1.8rem;">Simple & Affordable Pricing</h1>
+                
+                <div style="display: grid; grid-template-columns: 1fr; gap: 25px; margin: 30px 0;">
+                    <!-- Normal Paper -->
+                    <div style="background: white; border-radius: var(--radius); padding: 25px; box-shadow: var(--shadow); text-align: center;">
+                        <h3 style="margin-bottom: 15px; color: var(--dark-green); font-size: 1.3rem;">Normal Paper</h3>
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--dark-brown); margin: 15px 0;">
+                            30 <span style="font-size: 1rem; color: #666;">EGP/sheet</span>
+                        </div>
+                        <ul style="list-style: none; padding: 0; margin: 20px 0; text-align: left;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid var(--border-color); font-size: 0.95rem;">
+                                <i class="fas fa-check" style="color: var(--success); margin-right: 10px;"></i>
+                                Natural A4 size sheet
+                            </li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid var(--border-color); font-size: 0.95rem;">
+                                <i class="fas fa-check" style="color: var(--success); margin-right: 10px;"></i>
+                                Unique banana fiber texture
+                            </li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid var(--border-color); font-size: 0.95rem;">
+                                <i class="fas fa-check" style="color: var(--success); margin-right: 10px;"></i>
+                                100% biodegradable
+                            </li>
+                            <li style="padding: 8px 0; font-size: 0.95rem;">
+                                <i class="fas fa-check" style="color: var(--success); margin-right: 10px;"></i>
+                                Fast delivery
+                            </li>
+                        </ul>
+                        <button type="button" class="btn btn-primary" data-page="order" style="width: 100%; margin-top: 15px; padding: 14px;">
+                            <i class="fas fa-shopping-cart"></i>
+                            Order Now
+                        </button>
+                    </div>
+                    
+                    <!-- Custom Paper -->
+                    <div style="background: white; border-radius: var(--radius); padding: 25px; box-shadow: var(--shadow); text-align: center; border: 2px solid var(--primary-green); position: relative;">
+                        <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary-green); color: white; padding: 5px 20px; border-radius: 20px; font-weight: 600; font-size: 0.9rem;">
+                            Most Popular
+                        </div>
+                        <h3 style="margin-bottom: 15px; color: var(--dark-green); font-size: 1.3rem;">Custom Paper</h3>
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--dark-brown); margin: 15px 0;">
+                            35 <span style="font-size: 1rem; color: #666;">EGP/sheet</span>
+                        </div>
+                        <ul style="list-style: none; padding: 0; margin: 20px 0; text-align: left;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid var(--border-color); font-size: 0.95rem;">
+                                <i class="fas fa-check" style="color: var(--success); margin-right: 10px;"></i>
+                                Your custom design printed
+                            </li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid var(--border-color); font-size: 0.95rem;">
+                                <i class="fas fa-check" style="color: var(--success); margin-right: 10px;"></i>
+                                Premium A4 size sheet
+                            </li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid var(--border-color); font-size: 0.95rem;">
+                                <i class="fas fa-check" style="color: var(--success); margin-right: 10px;"></i>
+                                High-quality printing
+                            </li>
+                            <li style="padding: 8px 0; font-size: 0.95rem;">
+                                <i class="fas fa-check" style="color: var(--success); margin-right: 10px;"></i>
+                                Upload your image
+                            </li>
+                        </ul>
+                        <button type="button" class="btn btn-primary" data-page="order" style="width: 100%; margin-top: 15px; padding: 14px;">
+                            <i class="fas fa-shopping-cart"></i>
+                            Order Custom Paper
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Share Pricing -->
+                <div style="text-align: center; margin-top: 40px;">
+                    <h3 style="color: var(--dark-green); margin-bottom: 15px; font-size: 1.3rem;">Share These Amazing Prices!</h3>
+                    <div class="social-share">
+                        <a href="#" class="share-icon facebook" onclick="shareOnFacebook(event)">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="share-icon twitter" onclick="shareOnTwitter(event)">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="share-icon whatsapp" onclick="shareOnWhatsApp(event)">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="share-icon telegram" onclick="shareOnTelegram(event)">
+                            <i class="fab fa-telegram-plane"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <div class="logo-placeholder">
-                        <img src="1.png" alt="Logo" class="logo-img-medium">
-                        <h3 style="margin: 0; color: white;">حفظ المياه والأسمدة</h3>
+                <div>
+                    <div class="footer-logo">
+                        <i class="fas fa-leaf" style="font-size: 24px; color: var(--yellow);"></i>
+                        <div class="footer-logo-text">Banana<span>Paper</span></div>
                     </div>
-                    <p>نعمل على زيادة الوعي بأهمية ترشيد استهلاك المياه والأسمدة وتشجيع الحلول المستدامة لحماية بيئتنا ومواردنا.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    <p style="color: #bdc3c7; margin-bottom: 20px; font-size: 0.95rem;">Sustainable paper made from banana fibers. Eco-friendly and affordable.</p>
+                    <div class="social-share">
+                        <a href="#" class="share-icon facebook" onclick="shareOnFacebook(event)">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="share-icon twitter" onclick="shareOnTwitter(event)">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="share-icon whatsapp" onclick="shareOnWhatsApp(event)">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="footer-section">
-                    <h3>روابط سريعة</h3>
-                    <ul>
-                        <li><a href="#" onclick="showPage('home')">الرئيسية</a></li>
-                        <li><a href="#" onclick="showPage('about')">عن الحفظ</a></li>
-                        <li><a href="#" onclick="showPage('interactive')">التفاعل</a></li>
-                        <li><a href="#" onclick="showPage('resources')">المصادر</a></li>
-                    </ul>
+                
+                <div>
+                    <h3 style="margin-bottom: 15px; color: white; font-size: 1.2rem;">Contact</h3>
+                    <p style="color: #bdc3c7; margin-bottom: 10px; font-size: 0.95rem;">
+                        <i class="fas fa-envelope" style="margin-right: 10px;"></i>
+                        orders@bananapaper.com
+                    </p>
+                    <p style="color: #bdc3c7; margin-bottom: 10px; font-size: 0.95rem;">
+                        <i class="fab fa-telegram" style="margin-right: 10px;"></i>
+                        @BananaPaperBot
+                    </p>
+                    <p style="color: #bdc3c7; font-size: 0.95rem;">
+                        <i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i>
+                        Cairo, Egypt
+                    </p>
                 </div>
-                <div class="footer-section">
-                    <h3>مصادر مفيدة</h3>
-                    <ul>
-                        <li><a href="#">تقارير المياه</a></li>
-                        <li><a href="#">أبحاث الأسمدة</a></li>
-                        <li><a href="#">حملات التوعية</a></li>
-                        <li><a href="#">فرص التطوع</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>اتصل بنا</h3>
-                    <ul>
-                        <li><i class="fas fa-map-marker-alt" style="margin-left: 8px;"></i> العنوان: القاهرة، مصر</li>
-                        <li><i class="fas fa-phone" style="margin-left: 8px;"></i> الهاتف: +20 123 456 7890</li>
-                        <li><i class="fas fa-envelope" style="margin-left: 8px;"></i> البريد: info@water-conservation.org</li>
+                
+                <div>
+                    <h3 style="margin-bottom: 15px; color: white; font-size: 1.2rem;">Quick Links</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="#" data-page="home" style="color: #bdc3c7; text-decoration: none; display: block; margin-bottom: 10px; font-size: 0.95rem;">Home</a></li>
+                        <li><a href="#" data-page="order" style="color: #bdc3c7; text-decoration: none; display: block; margin-bottom: 10px; font-size: 0.95rem;">Order Now</a></li>
+                        <li><a href="#" data-page="process" style="color: #bdc3c7; text-decoration: none; display: block; margin-bottom: 10px; font-size: 0.95rem;">Our Process</a></li>
+                        <li><a href="#" data-page="prices" style="color: #bdc3c7; text-decoration: none; display: block; font-size: 0.95rem;">Prices</a></li>
                     </ul>
                 </div>
             </div>
+            
             <div class="copyright">
-                <p>&copy; 2023 حفظ المياه والأسمدة. جميع الحقوق محفوظة.</p>
+                <p>&copy; 2023 Banana Paper Egypt. Sustainable Innovation for a Greener Tomorrow.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem;">
+                    Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> for a better planet
+                </p>
             </div>
         </div>
     </footer>
 
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <i class="fas fa-check-circle" style="font-size: 24px; color: var(--success);"></i>
+            <div>
+                <h4 style="margin-bottom: 5px;" id="notificationTitle">Order Submitted!</h4>
+                <p style="font-size: 14px;" id="notificationMessage">Your order has been sent to our Telegram bot.</p>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Splash Screen Functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const splashScreen = document.getElementById('splash-screen');
-            const loadingProgress = document.getElementById('loading-progress');
-            
-            // Simulate loading progress
-            let progress = 0;
-            const interval = setInterval(() => {
-                progress += Math.random() * 15;
-                if (progress >= 100) {
-                    progress = 100;
-                    clearInterval(interval);
-                    
-                    // Hide splash screen after a short delay
-                    setTimeout(() => {
-                        splashScreen.style.opacity = '0';
-                        splashScreen.style.visibility = 'hidden';
-                    }, 500);
+        // Telegram Bot Configuration
+        const TELEGRAM_BOT_TOKEN = '8587564628:AAHxWsAlIz3k0ZDgmnr3R_OcTJwMoFcDgbY';
+        const TELEGRAM_CHAT_ID = '7292389993';
+        const SITE_URL = window.location.href;
+        
+        // DOM Elements
+        const splashScreen = document.getElementById('splash-screen');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navLinks');
+        const notification = document.getElementById('notification');
+        const homeLogo = document.getElementById('homeLogo');
+        
+        // Order Form Elements
+        const emailInput = document.getElementById('email');
+        const quantityDisplay = document.getElementById('quantityDisplay');
+        const quantitySummary = document.getElementById('summaryQuantity');
+        const decreaseBtn = document.getElementById('decreaseBtn');
+        const increaseBtn = document.getElementById('increaseBtn');
+        const paperSize = document.getElementById('paperSize');
+        const summarySize = document.getElementById('summarySize');
+        const notesInput = document.getElementById('notes');
+        const submitBtn = document.getElementById('submitOrderBtn');
+        const totalPrice = document.getElementById('totalPrice');
+        const summaryTotal = document.getElementById('summaryTotal');
+        const summaryType = document.getElementById('summaryType');
+        const summaryUnitPrice = document.getElementById('summaryUnitPrice');
+        const statusMessage = document.getElementById('statusMessage');
+        
+        // Paper Type Elements
+        const normalPaperBtn = document.getElementById('normalPaperBtn');
+        const customPaperBtn = document.getElementById('customPaperBtn');
+        const imageUploadSection = document.getElementById('imageUploadSection');
+        const uploadArea = document.getElementById('uploadArea');
+        const imageInput = document.getElementById('imageInput');
+        
+        // Variables
+        let quantity = 2;
+        let unitPrice = 30;
+        let paperType = 'normal';
+        let uploadedImage = null;
+        let uploadedImageName = '';
+        
+        // Fix splash screen
+        function hideSplashScreen() {
+            splashScreen.classList.add('hidden');
+            setTimeout(() => {
+                splashScreen.style.display = 'none';
+            }, 800);
+        }
+        
+        // Hide splash screen after 3 seconds
+        setTimeout(hideSplashScreen, 3000);
+        
+        // Also hide on click
+        splashScreen.addEventListener('click', hideSplashScreen);
+        
+        // Navigation
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetPage = link.dataset.page;
+                navigateToPage(targetPage);
+                
+                // Close mobile menu on mobile
+                if (window.innerWidth <= 768) {
+                    navMenu.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
                 }
-                loadingProgress.style.width = `${progress}%`;
+            });
+        });
+        
+        // Mobile Menu
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                if (!navMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    navMenu.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            }
+        });
+        
+        // Navigation function
+        function navigateToPage(targetPage) {
+            // Update active nav link
+            navLinks.forEach(link => link.classList.remove('active'));
+            document.querySelector(`.nav-link[data-page="${targetPage}"]`).classList.add('active');
+            
+            // Show target page
+            pages.forEach(page => {
+                page.classList.remove('active');
+                if (page.id === `${targetPage}-page`) {
+                    page.classList.add('active');
+                }
+            });
+            
+            // Scroll to top smoothly
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Paper Type Selection
+        normalPaperBtn.addEventListener('click', () => {
+            paperType = 'normal';
+            unitPrice = 30;
+            imageUploadSection.classList.remove('active');
+            summaryType.textContent = 'Normal Paper';
+            summaryUnitPrice.textContent = '30 EGP';
+            updateTotalPrice();
+            normalPaperBtn.className = 'btn btn-primary';
+            customPaperBtn.className = 'btn btn-secondary';
+        });
+        
+        customPaperBtn.addEventListener('click', () => {
+            paperType = 'custom';
+            unitPrice = 35;
+            imageUploadSection.classList.add('active');
+            summaryType.textContent = 'Custom Paper';
+            summaryUnitPrice.textContent = '35 EGP';
+            updateTotalPrice();
+            normalPaperBtn.className = 'btn btn-secondary';
+            customPaperBtn.className = 'btn btn-primary';
+        });
+        
+        // Image Upload - Mobile optimized
+        uploadArea.addEventListener('click', () => {
+            imageInput.click();
+        });
+        
+        imageInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                if (file.size > 5 * 1024 * 1024) { // 5MB limit
+                    showStatus('Image size should be less than 5MB', 'error');
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    uploadedImage = event.target.result;
+                    uploadedImageName = file.name;
+                    
+                    // Update upload area text
+                    uploadArea.innerHTML = `
+                        <div style="text-align: center;">
+                            <div class="upload-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <p class="upload-text">Image uploaded: ${file.name}</p>
+                            <img id="imagePreview" src="${uploadedImage}" alt="Preview" style="max-width: 100%; max-height: 150px; margin-top: 15px; border-radius: var(--radius);">
+                        </div>
+                    `;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // Quantity Controls with touch optimization
+        decreaseBtn.addEventListener('click', () => {
+            if (quantity > 1) {
+                quantity--;
+                updateQuantity();
+            }
+        });
+        
+        increaseBtn.addEventListener('click', () => {
+            if (quantity < 100) {
+                quantity++;
+                updateQuantity();
+            }
+        });
+        
+        // Add touch hold for quantity buttons
+        let decreaseInterval, increaseInterval;
+        
+        decreaseBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            decreaseInterval = setInterval(() => {
+                if (quantity > 1) {
+                    quantity--;
+                    updateQuantity();
+                }
             }, 200);
         });
+        
+        increaseBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            increaseInterval = setInterval(() => {
+                if (quantity < 100) {
+                    quantity++;
+                    updateQuantity();
+                }
+            }, 200);
+        });
+        
+        // Clear intervals on touchend
+        document.addEventListener('touchend', () => {
+            clearInterval(decreaseInterval);
+            clearInterval(increaseInterval);
+        });
+        
+        function updateQuantity() {
+            quantityDisplay.textContent = quantity;
+            quantitySummary.textContent = quantity;
+            updateTotalPrice();
+        }
+        
+        function updateTotalPrice() {
+            const total = quantity * unitPrice;
+            totalPrice.textContent = total;
+            summaryTotal.textContent = total + ' EGP';
+        }
+        
+        // Paper Size Change
+        paperSize.addEventListener('change', () => {
+            summarySize.textContent = paperSize.value;
+        });
+        
+        // Form Validation
+        function validateForm() {
+            const email = emailInput.value.trim();
+            
+            if (!email) {
+                showStatus('Please enter your email address', 'error');
+                return false;
+            }
+            
+            if (!validateEmail(email)) {
+                showStatus('Please enter a valid email address', 'error');
+                return false;
+            }
+            
+            if (paperType === 'custom' && !uploadedImage) {
+                showStatus('Please upload an image for custom paper', 'error');
+                return false;
+            }
+            
+            return true;
+        }
+        
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+        
+        // Submit Order
+        submitBtn.addEventListener('click', async () => {
+            if (!validateForm()) return;
+            
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<div class="spinner"></div> Processing...';
+            
+            // Prepare order data
+            const orderData = {
+                email: emailInput.value.trim(),
+                paperType: paperType,
+                quantity: quantity,
+                size: paperSize.value,
+                notes: notesInput.value.trim(),
+                unitPrice: unitPrice,
+                totalPrice: quantity * unitPrice,
+                hasImage: paperType === 'custom',
+                imageName: uploadedImageName || 'No image',
+                timestamp: new Date().toLocaleString('en-EG', { 
+                    timeZone: 'Africa/Cairo',
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })
+            };
+            
+            try {
+                // Try Telegram first
+                const telegramResult = await sendToTelegram(orderData);
+                
+                if (telegramResult.success) {
+                    // Success
+                    showStatus('Order submitted successfully! We will email you confirmation.', 'success');
+                    showNotification('Order Submitted!', 'Your order has been received and is being processed.');
+                    
+                    // Reset form
+                    resetForm();
+                } else {
+                    // Telegram failed, try fallback
+                    const fallbackResult = await sendOrderFallback(orderData);
+                    
+                    if (fallbackResult.success) {
+                        showStatus('Order submitted (backup method)! We will contact you soon.', 'warning');
+                        showNotification('Order Received', 'Your order has been saved and will be processed.');
+                        
+                        // Reset form
+                        resetForm();
+                    } else {
+                        throw new Error('All submission methods failed');
+                    }
+                }
+            } catch (error) {
+                console.error('Order submission error:', error);
+                showStatus('Error submitting order. Please try again or contact us.', 'error');
+            } finally {
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Place Order - <span id="totalPrice">' + (quantity * unitPrice) + '</span> EGP';
+            }
+        });
+        
+        function resetForm() {
+            emailInput.value = '';
+            quantity = 2;
+            updateQuantity();
+            paperSize.value = 'A4';
+            summarySize.textContent = 'A4';
+            notesInput.value = '';
+            paperType = 'normal';
+            unitPrice = 30;
+            imageUploadSection.classList.remove('active');
+            summaryType.textContent = 'Normal Paper';
+            summaryUnitPrice.textContent = '30 EGP';
+            uploadedImage = null;
+            uploadedImageName = '';
+            updateTotalPrice();
+            
+            // Reset upload area
+            uploadArea.innerHTML = `
+                <div class="upload-icon">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <p class="upload-text">Tap to upload image</p>
+                <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                <img id="imagePreview" alt="Preview">
+            `;
+            
+            // Re-attach event listeners
+            const newImageInput = uploadArea.querySelector('#imageInput');
+            newImageInput.addEventListener('change', imageInput.onchange);
+        }
+        
+        // Telegram Function
+        async function sendToTelegram(orderData) {
+            try {
+                let message = `
+📄 *NEW BANANA PAPER ORDER*
 
-        // Page Navigation
-        function showPage(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
+📧 Email: ${orderData.email}
+📋 Paper Type: ${orderData.paperType === 'normal' ? 'Normal Paper' : 'Custom Paper'}
+🔢 Quantity: ${orderData.quantity}
+📏 Size: ${orderData.size}
+💰 Unit Price: ${orderData.unitPrice} EGP
+💵 Total Price: ${orderData.totalPrice} EGP
+
+📝 Notes: ${orderData.notes || 'None'}
+
+⏰ Time: ${orderData.timestamp}
+                `;
+                
+                if (orderData.hasImage) {
+                    message += `\n🖼️ Image: ${orderData.imageName}`;
+                }
+                
+                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.ok) {
+                    console.log('Telegram message sent successfully');
+                    return { success: true, data: data };
+                } else {
+                    console.error('Telegram API error:', data);
+                    return { success: false, error: data };
+                }
+            } catch (error) {
+                console.error('Telegram send error:', error);
+                return { success: false, error: error };
+            }
+        }
+        
+        // Fallback method - Save to localStorage
+        async function sendOrderFallback(orderData) {
+            try {
+                // Generate unique order ID
+                const orderId = 'BP-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+                
+                // Get existing orders or initialize array
+                const orders = JSON.parse(localStorage.getItem('bananaPaperOrders') || '[]');
+                
+                // Add new order
+                orders.push({
+                    id: orderId,
+                    ...orderData,
+                    status: 'pending',
+                    date: new Date().toISOString()
+                });
+                
+                // Save back to localStorage
+                localStorage.setItem('bananaPaperOrders', JSON.stringify(orders));
+                
+                console.log('Order saved locally with ID:', orderId);
+                
+                // Show alert for manual processing
+                alert(`Order ID: ${orderId}\n\nPlease send this order ID to our Telegram bot: @BananaPaperBot\n\nEmail: ${orderData.email}\nPaper Type: ${orderData.paperType === 'normal' ? 'Normal Paper' : 'Custom Paper'}\nQuantity: ${orderData.quantity}\nTotal: ${orderData.totalPrice} EGP`);
+                
+                return { success: true, orderId: orderId };
+            } catch (error) {
+                console.error('Local storage error:', error);
+                return { success: false, error: error };
+            }
+        }
+        
+        // Status message
+        function showStatus(message, type) {
+            statusMessage.textContent = message;
+            statusMessage.className = 'status-message ' + type;
             
-            // Show selected page
-            document.getElementById(pageId).classList.add('active');
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                statusMessage.className = 'status-message';
+            }, 5000);
+        }
+        
+        // Notification
+        function showNotification(title, message) {
+            document.getElementById('notificationTitle').textContent = title;
+            document.getElementById('notificationMessage').textContent = message;
+            notification.classList.add('show');
             
-            // Update active nav link
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-            });
-            
-            // Find and activate the corresponding nav link
-            document.querySelectorAll('.nav-link').forEach(link => {
-                if (link.textContent.trim() === getPageName(pageId)) {
-                    link.classList.add('active');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 5000);
+        }
+        
+        // Share Functions
+        function shareOnFacebook(e) {
+            if (e) e.preventDefault();
+            const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(SITE_URL)}&quote=Check%20out%20this%20awesome%20eco-friendly%20banana%20paper%20made%20in%20Egypt!`;
+            window.open(url, '_blank', 'width=600,height=400');
+        }
+        
+        function shareOnTwitter(e) {
+            if (e) e.preventDefault();
+            const text = 'Amazing eco-friendly paper made from banana fibers! Sustainable and affordable. Made in Egypt.';
+            const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(SITE_URL)}`;
+            window.open(url, '_blank', 'width=600,height=400');
+        }
+        
+        function shareOnWhatsApp(e) {
+            if (e) e.preventDefault();
+            const text = 'Check out this amazing eco-friendly banana paper made in Egypt! ' + SITE_URL;
+            const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
+        }
+        
+        function shareOnTelegram(e) {
+            if (e) e.preventDefault();
+            const text = 'Check out this amazing eco-friendly banana paper made in Egypt! ' + SITE_URL;
+            const url = `https://t.me/share/url?url=${encodeURIComponent(SITE_URL)}&text=${encodeURIComponent('Amazing banana paper!')}`;
+            window.open(url, '_blank');
+        }
+        
+        function shareImpact() {
+            const text = 'Did you know? Each sheet of banana paper saves approximately 0.5 kg of banana waste from landfills! ' + SITE_URL;
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Banana Paper Eco Impact',
+                    text: text,
+                    url: SITE_URL
+                });
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                alert('Share this amazing eco-impact with your friends!');
+            }
+        }
+        
+        // CTA Buttons
+        document.querySelectorAll('.btn[data-page]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                if (btn.dataset.page) {
+                    e.preventDefault();
+                    navigateToPage(btn.dataset.page);
                 }
             });
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
-        }
-        
-        function getPageName(pageId) {
-            const pageNames = {
-                'home': 'الرئيسية',
-                'about': 'عن الحفظ',
-                'interactive': 'التفاعل',
-                'resources': 'المصادر',
-                'signup': 'إنشاء حساب',
-                'login': 'تسجيل الدخول'
-            };
-            return pageNames[pageId] || '';
-        }
-        
-        // Open Game in New Tab
-        function openGame() {
-            window.open('https://ezz-king33.itch.io/robot', '_blank');
-        }
-        
-        // Form Handling
-        document.getElementById('signup-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirm-password').value;
-            
-            if (password !== confirmPassword) {
-                alert('كلمات المرور غير متطابقة!');
-                return;
-            }
-            
-            alert('تم إنشاء حسابك بنجاح! سيتم توجيهك إلى الصفحة الرئيسية.');
-            showPage('home');
         });
         
-        document.getElementById('login-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('تم تسجيل الدخول بنجاح!');
-            showPage('home');
+        // Footer Links
+        document.querySelectorAll('footer a[data-page]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                navigateToPage(link.dataset.page);
+            });
         });
         
-        // Interactive Elements
-        function startCalculator() {
-            document.getElementById('calculator').style.display = 'block';
-            document.getElementById('quiz').style.display = 'none';
-            document.getElementById('impact').style.display = 'none';
-            document.getElementById('crop-game').style.display = 'none';
-            document.getElementById('calculator-result').style.display = 'none';
-        }
+        // Logo click
+        homeLogo.addEventListener('click', (e) => {
+            e.preventDefault();
+            navigateToPage('home');
+        });
         
-        function calculateConsumption() {
-            const land = parseFloat(document.getElementById('land').value) || 0;
-            const waterUsage = parseFloat(document.getElementById('waterUsage').value) || 0;
-            const fertilizerUsage = parseFloat(document.getElementById('fertilizerUsage').value) || 0;
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            updateTotalPrice();
             
-            const waterSavings = waterUsage * 0.3; // 30% potential savings
-            const fertilizerSavings = fertilizerUsage * 0.4; // 40% potential savings
-            const costSavings = (waterSavings * 0.5) + (fertilizerSavings * 2); // Estimated costs
+            // Hide splash screen if still showing
+            hideSplashScreen();
             
-            document.getElementById('calculator-result').innerHTML = `
-                <h4>نتيجة حسابك:</h4>
-                <p><strong>التوفير المحتمل في المياه:</strong> ${waterSavings.toFixed(1)} م³ أسبوعياً</p>
-                <p><strong>التوفير المحتمل في الأسمدة:</strong> ${fertilizerSavings.toFixed(1)} كجم شهرياً</p>
-                <p><strong>التوفير المالي الشهري:</strong> ${costSavings.toFixed(0)} دولار</p>
-                <p style="color: var(--accent); margin-top: 1rem;">يمكنك تحقيق هذا التوفير باستخدام تقنيات الري الذكي والاستخدام الأمثل للأسمدة!</p>
-            `;
-            document.getElementById('calculator-result').style.display = 'block';
-        }
-        
-        function startQuiz() {
-            document.getElementById('calculator').style.display = 'none';
-            document.getElementById('quiz').style.display = 'block';
-            document.getElementById('impact').style.display = 'none';
-            document.getElementById('crop-game').style.display = 'none';
-            document.getElementById('quiz-result').style.display = 'none';
-            
-            // Reset quiz
-            document.querySelectorAll('.quiz-option').forEach(option => {
-                option.classList.remove('selected');
-            });
-        }
-        
-        function selectOption(element) {
-            // Remove selection from all options in this question
-            const parent = element.parentElement;
-            parent.querySelectorAll('.quiz-option').forEach(option => {
-                option.classList.remove('selected');
-            });
-            
-            // Select the clicked option
-            element.classList.add('selected');
-        }
-        
-        function nextQuestion() {
-            const selectedOption = document.querySelector('.quiz-option.selected');
-            if (!selectedOption) {
-                alert('يرجى اختيار إجابة أولاً!');
-                return;
+            // Check if there are pending orders in localStorage
+            const pendingOrders = JSON.parse(localStorage.getItem('bananaPaperOrders') || '[]');
+            if (pendingOrders.length > 0) {
+                console.log(`Found ${pendingOrders.length} pending orders in localStorage`);
             }
             
-            document.getElementById('quiz-result').innerHTML = `
-                <h4>إجابة صحيحة!</h4>
-                <p>الري بالتنقيط هو أفضل طريقة لترشيد استهلاك المياه في الزراعة لأنه يوفر المياه بنسبة تصل إلى 50% مقارنة بالطرق التقليدية.</p>
-            `;
-            document.getElementById('quiz-result').style.display = 'block';
-        }
+            // Prevent double-tap zoom on mobile
+            let lastTouchEnd = 0;
+            document.addEventListener('touchend', (event) => {
+                const now = (new Date()).getTime();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, false);
+        });
         
-        function showImpact() {
-            document.getElementById('calculator').style.display = 'none';
-            document.getElementById('quiz').style.display = 'none';
-            document.getElementById('impact').style.display = 'block';
-            document.getElementById('crop-game').style.display = 'none';
-            
-            resetSimulation();
-        }
-        
-        let currentSavings = 0;
-        let years = 0;
-        
-        function simulateYears(numYears) {
-            years += numYears;
-            currentSavings += 500 * numYears; // $500 savings per year
-            
-            const savingsHeight = Math.min(100, (years / 20) * 100);
-            document.getElementById('savings-visualization').style.height = `${savingsHeight}%`;
-            
-            document.getElementById('impact-stats').innerHTML = `
-                <h4>نتيجة المحاكاة:</h4>
-                <p><strong>عدد السنوات:</strong> ${years} سنة</p>
-                <p><strong>إجمالي التوفير:</strong> $${currentSavings}</p>
-                <p><strong>المياه الموفرّة:</strong> ${years * 10000} لتر</p>
-                <p><strong>الأسمدة الموفرّة:</strong> ${years * 200} كجم</p>
-            `;
-        }
-        
-        function resetSimulation() {
-            years = 0;
-            currentSavings = 0;
-            document.getElementById('savings-visualization').style.height = '0%';
-            document.getElementById('impact-stats').innerHTML = `
-                <p>انقر على الأزرار لبدء المحاكاة ورؤية تأثير الترشيد بمرور الوقت.</p>
-            `;
-        }
-        
-        // Crop Selection Game
-        let selectedClimate = '';
-        let selectedCrop = '';
-        let gameScore = 0;
-        let gameLevel = 1;
-        let gameLives = 3;
-        
-        function startCropGame() {
-            document.getElementById('calculator').style.display = 'none';
-            document.getElementById('quiz').style.display = 'none';
-            document.getElementById('impact').style.display = 'none';
-            document.getElementById('crop-game').style.display = 'block';
-            
-            // Reset game state
-            selectedClimate = '';
-            selectedCrop = '';
-            document.querySelectorAll('.climate-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-            document.querySelectorAll('.crop-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-            document.getElementById('crops-section').style.display = 'none';
-            document.getElementById('game-result').style.display = 'none';
-            
-            updateGameStats();
-        }
-        
-        function selectClimate(climate) {
-            selectedClimate = climate;
-            document.querySelectorAll('.climate-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-            event.currentTarget.classList.add('selected');
-            document.getElementById('crops-section').style.display = 'block';
-        }
-        
-        function selectCrop(crop) {
-            selectedCrop = crop;
-            document.querySelectorAll('.crop-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-            event.currentTarget.classList.add('selected');
-        }
-        
-        function checkCropSelection() {
-            if (!selectedClimate || !selectedCrop) {
-                alert('يرجى اختيار المناخ والمحصول أولاً!');
-                return;
-            }
-            
-            const correctPairs = {
-                'desert': ['date', 'olive'],
-                'mediterranean': ['olive', 'grape'],
-                'tropical': ['banana', 'coffee'],
-                'temperate': ['tomato', 'wheat']
-            };
-            
-            const isCorrect = correctPairs[selectedClimate].includes(selectedCrop);
-            
-            if (isCorrect) {
-                gameScore += 10 * gameLevel;
-                document.getElementById('game-result').className = 'game-result result-success';
-                document.getElementById('result-title').textContent = 'إجابة صحيحة!';
-                document.getElementById('result-message').textContent = 'لقد اخترت المحصول المناسب للمناخ.';
-            } else {
-                gameLives--;
-                document.getElementById('game-result').className = 'game-result result-error';
-                document.getElementById('result-title').textContent = 'إجابة خاطئة!';
-                document.getElementById('result-message').textContent = 'هذا المحصول غير مناسب للمناخ المختار.';
-            }
-            
-            document.getElementById('game-result').style.display = 'block';
-            updateGameStats();
-            
-            if (gameLives <= 0) {
-                setTimeout(() => {
-                    alert('انتهت المحاولات! لقد خسرت اللعبة. النقاط النهائية: ' + gameScore);
-                    startCropGame();
-                }, 1500);
-            }
-        }
-        
-        function nextLevel() {
-            gameLevel++;
-            document.getElementById('game-result').style.display = 'none';
-            selectedClimate = '';
-            selectedCrop = '';
-            document.querySelectorAll('.climate-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-            document.querySelectorAll('.crop-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-            document.getElementById('crops-section').style.display = 'none';
-            updateGameStats();
-        }
-        
-        function updateGameStats() {
-            document.getElementById('score').textContent = gameScore;
-            document.getElementById('level').textContent = gameLevel;
-            document.getElementById('lives').textContent = gameLives;
-        }
+        // Handle orientation change
+        window.addEventListener('orientationchange', () => {
+            // Force a repaint to fix layout issues
+            document.body.style.display = 'none';
+            document.body.offsetHeight; // Trigger reflow
+            document.body.style.display = '';
+        });
     </script>
 </body>
 </html>
